@@ -21,17 +21,18 @@ with open('output.txt', 'w') as f :
 In order to decode the flag from the output given to us we write the reverse script.
 ```python
 #decoder
-with open('flag.txt', 'r') as f :
-    flag = f.read()
+with open('output.txt', 'r') as f:
+    e = f.read()
 
-s = ''.join(format(ord(i), '02x') for i in flag)
-e = ""
+decoded = ""
 
-for i in range(0,len(s),4) :
-    e += format(int(s[i:i+2],16), '02x')+format(int(s[i:i+2],16)^int(s[i+2:i+4],16), '02x')
+for i in range(0, len(e), 4):
+    a = int(e[i:i+2], 16)
+    b = int(e[i+2:i+4], 16) ^ a
+    decoded += chr(a) + chr(b)
 
-with open('output.txt', 'w') as f :
-    f.write(e)
+with open('recovered_flag.txt', 'w') as f:
+    f.write(decoded)
 ```
 Using this we obtain our flag.
 ## Flag
