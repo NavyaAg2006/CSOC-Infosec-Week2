@@ -1,7 +1,7 @@
 import hashlib
 from Crypto.Util.number import bytes_to_long
 
-with open("private_0a1880d1fffce9403686130a1f932b10.key", "r") as f:
+with open("private.key", "r") as f:
     content = f.read()
 
 lines = content.strip().split('\n')
